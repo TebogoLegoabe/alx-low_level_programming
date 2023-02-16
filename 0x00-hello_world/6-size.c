@@ -3,7 +3,7 @@
 /**
  * main - Size is not grander, and territory does not make a nation
  *
- * Retuen: 0 (Success)
+ * Return: 0 (Success)
  */
 int main(void)
 {
