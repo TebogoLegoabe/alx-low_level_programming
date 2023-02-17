@@ -28,7 +28,7 @@ int main(void)
 	}
 	divisor /= 10;
 	}
-	putchar((number < 9) ? ',' : '$');
+	putchar(',');
 	putchar(' ');
 	}
 	putchar('\n');
