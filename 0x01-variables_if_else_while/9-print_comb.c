@@ -28,9 +28,10 @@ int main(void)
 	}
 	divisor /= 10;
 	}
+	if (number < 9)
 	putchar(',');
 	putchar(' ');
-	}
+	else
 	putchar('\n');
 	return (0);
 }
