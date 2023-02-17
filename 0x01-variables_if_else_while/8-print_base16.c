@@ -14,7 +14,6 @@ int main(void)
 	{
 	int digit;
 	int divisor;
-	char alpha;
 
 	divisor = 1;
 	while (number / divisor >= 10)
