@@ -1,23 +1,21 @@
 #include <stdio.h>
 
 /**
- * main - print _putchar
+ * main - putchar
  *
  * Return:0 (Success)
  *
  */
 int main(void)
 {
-	void _putchar(void)
-	{
-		const char *str = "_putchar\n";
-		int i;
-
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			putchar(str[i]);
-		}
-	}
-
+putchar('_');
+putchar('p');
+putchar('u');
+putchar('t');
+putchar('c');
+putchar('h');
+putchar('a');
+putchar('r');
+putchar('\n');
 	return (0);
 }
