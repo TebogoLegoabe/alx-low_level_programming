@@ -8,11 +8,12 @@
  */
 int main(void)
 {
-	void _putchar() 
+	void _putchar(void)
 	{
-		const char* str = "_putchar\n";
+		const char *str = "_putchar\n";
 		int i;
-		for(i =0; str[i] != '\0'; i++)
+
+		for (i = 0; str[i] != '\0'; i++)
 		{
 			putchar(str[i]);
 		}
