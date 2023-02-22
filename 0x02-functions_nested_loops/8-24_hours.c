@@ -6,12 +6,14 @@
 * Return:0 if succeesful.
 */
 
-int h, m;
-
 void jack_bauer(void)
 {
+	int h;
+
 for (h = 0; h < 24; h++)
 {
+	int m;
+
 for (m = 0; m < 60; m++)
 {
 _putchar(h / 10 + '0');
