@@ -19,7 +19,7 @@ while (*y != '\0')
 y++;
 i++;
 }
-j = longi - 1;
+j = i - 1;
 for (tmp = 0 ; tmp <= j ; tmp++)
 {
 if (tmp % 2 == 0)
