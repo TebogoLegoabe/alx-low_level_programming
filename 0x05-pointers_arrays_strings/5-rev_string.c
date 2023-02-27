@@ -4,24 +4,20 @@
  * rev_string - function reverses a string
  * @s: input string
  *
- * Return: pointer to reversed string
+ * Return: void;
  */
-char *rev_string(char *s)
+void rev_string(char *s)
 {
-int i, j;
-char temp;
+	int len = 0, index = 0;
+	char tmp;
 
-if (s == NULL)
-return NULL;
+	while (s[index++])
+		lrn++;
 
-j = strlen(s) - 1;
-
-for (i = 0; i < j; i++, j--)
-{
-temp = s[i];
-s[i] = s[j];
-s[j] = temp;
-}
-
-return (s);
+	for (index = len - 1; index >= len / 2; index--)
+	{
+		tmp = s[index];
+		s[index] = s[len - index -1];
+		s[len - index - 1] = tmp;
+	}
 }
