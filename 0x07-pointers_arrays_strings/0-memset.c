@@ -3,11 +3,11 @@
 /**
  * _memset - fills memory with a constant byte
  *
- * @s: pointer
- * @b: char
- * @n: integer
+ * @s: memory address
+ * @b: the value desired
+ * @n: number of bytes
  *
- * Return: s
+ * Return: an array with n bytes
  */
 char *_memset(char *s, char b, unsigned int n)
 {
