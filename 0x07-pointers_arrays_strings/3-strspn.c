@@ -9,7 +9,9 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int n = 0;
+	unsigned int n;
+
+	n = 0;
 
 	while (*s && strchr(accept, *s))
 	{
