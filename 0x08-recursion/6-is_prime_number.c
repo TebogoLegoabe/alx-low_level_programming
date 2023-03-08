@@ -1,32 +1,32 @@
 #include "main.h"
 
-int recursive_square_root(int n, int iterator);
+int actual_prime(int n, int i);
 
 /**
- * get_square_root - returns the square root of a number
- * @n: the number to calculate the square root of
+ * is_prime_number - says if an integer is a prime number or not
+ * @n: number to evaluate
  *
- * Return: the resulting square root
+ * Return: 1 if n is a prime number, 0 if not
  */
-int get_square_root(int n)
+int is_prime_number(int n)
 {
-if (n < 0)
-return (-1);
-return (recursive_square_root(n, 0));
+if (n <= 1)
+return (0);
+return (actual_prime(n, n - 1));
 }
 
 /**
-* recursive_square_root - recursively finds the square root of a number
-* @n: the number to calculate the square root of
-* @iterator: an iterator used to calculate the square root
+* actual_prime - calculates if a number is prime recursively
+* @n: number to evaluate
+* @i: iterator
 *
-* Return: the resulting square root
+* Return: 1 if n is prime, 0 if not
 */
-int recursive_square_root(int n, int iterator)
+int actual_prime(int n, int i)
 {
-if (iterator * iterator > n)
-return (-1);
-if (iterator * iterator == n)
-return (iterator);
-return (recursive_square_root(n, iterator + 1));
+if (i == 1)
+return (1);
+if (n % i == 0 && i > 0)
+return (0);
+return (actual_prime(n, i - 1));
 }
