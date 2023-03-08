@@ -16,17 +16,16 @@ int _sqrt_recursion(int n)
 	{
 		return (n);
 	}
-	
-	int base, upper;
 
-	base = _sqrt_recursion(n / 4) * 2;
-	upper = base + 1;
+	int base = _sqrt_recursion(n / 4) * 2;
+	int upper = base + 1;
+
 	if (upper * upper > n)
 	{
 		return (base);
 	}
 	else
-		return upper;
+		return (upper);
 
 }
 
