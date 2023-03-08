@@ -17,8 +17,7 @@ int _sqrt_recursion(int n)
 		return (n);
 	}
 	
-	int base;
-	int upper;
+	int base, upper;
 
 	base = _sqrt_recursion(n / 4) * 2;
 	upper = base + 1;
