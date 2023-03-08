@@ -1,52 +1,32 @@
 #include "main.h"
 
+int recursive_square_root(int n, int iterator);
+
 /**
- * is_prime_number - checks if a given integer is prime
+ * get_square_root - returns the square root of a number
+ * @n: the number to calculate the square root of
  *
- * @n: the integer to check
- *
- * Return: 1 if n is prime, 0 otherwise
+ * Return: the resulting square root
  */
-int is_prime_number(int n)
+int get_square_root(int n)
 {
-if (n < 2)
-{
-return (0);
-}
-if (n == 2 || n == 3)
-{
-return (1);
-}
-
-if (n % 2 == 0 || n % 3 == 0)
-{
-return (0);
-}
-
-int limit = sqrt(n);
-
-return (check_divisor(n, 5, limit));
+if (n < 0)
+return (-1);
+return (recursive_square_root(n, 0));
 }
 
 /**
-* check_divisor - recursively checks if n is divisible by any odd number
-*                  greater than 3 and less than or equal to limit
+* recursive_square_root - recursively finds the square root of a number
+* @n: the number to calculate the square root of
+* @iterator: an iterator used to calculate the square root
 *
-* @n: the integer to check
-* @divisor: the current divisor being tested
-* @limit: the largest potential divisor to check
-*
-* Return: 1 if n is prime, 0 otherwise
+* Return: the resulting square root
 */
-int check_divisor(int n, int divisor, int limit)
+int recursive_square_root(int n, int iterator)
 {
-if (divisor > limit)
-{
-return (1);
-}
-if (n % divisor == 0 || n % (divisor + 2) == 0)
-{
-return (0);
-}
-return (check_divisor(n, divisor + 6, limit));
+if (iterator * iterator > n)
+return (-1);
+if (iterator * iterator == n)
+return (iterator);
+return (recursive_square_root(n, iterator + 1));
 }
