@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * wildcmp - compares two strings and returns 1 if the strings can be considered identical, otherwise return 0
- * @s1: pointer 
- * @s2: pointer 
+ * wildcmp - compares two strings
+ * @s1: pointer
+ * @s2: pointer
  * Return: 0 (Success)
  */
 
