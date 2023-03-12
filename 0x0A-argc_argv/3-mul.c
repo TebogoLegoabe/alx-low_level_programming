@@ -45,34 +45,3 @@ return (0);
 
 return (num1 *num2);
 }
-
-/**
-* main - multiplies two numbers
-*
-* @argc: number of arguments
-* @argv: array of arguments
-*
-* Return: 0 (Success), 1 (Error)
-*/
-int main(int argc, char *argv[])
-{
-int result;
-
-if (argc != 2)
-{
-printf("Error\n");
-return (1);
-}
-
-result = _mul(argv[1]);
-
-if (result == 0)
-{
-printf("Error\n");
-return (1);
-}
-
-printf("%d\n", result);
-
-return (0);
-}
