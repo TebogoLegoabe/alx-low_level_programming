@@ -16,7 +16,7 @@ char **strtow(char *str)
 	char *test;
 	char *spt;
 
-	if (str == NULL || str == "")
+	if (str == NULL || *str == '\0')
 	{
 		return (NULL);
 	}
@@ -35,7 +35,7 @@ char **strtow(char *str)
 			free(words);
 			return (NULL);
 		}
-		words = spt;
+		words = &spt;
 		words[word_count++] = strdup(test);
 		test = strtok(NULL, " ");
 	}
