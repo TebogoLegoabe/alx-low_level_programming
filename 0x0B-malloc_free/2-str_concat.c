@@ -19,7 +19,7 @@ char *str_concat(char *s1, char *s2)
 
 	char *results;
 
-	results = (char *)malloc(string_lenth1 + string_length2 + 1);
+	results = (char *)malloc(string_length1 + string_length2 + 1);
 	if (!results)
 	{
 		return (NULL);
@@ -27,7 +27,7 @@ char *str_concat(char *s1, char *s2)
 	memcpy(results, s1, string_length1);
 	memcpy(results + string_length1, s2, string_length2 + 1);
 
-	result[len1 + len2] = '\0';
+	results[string_length1 + string_length2] = '\0';
 
 	return (results);
 }
