@@ -39,6 +39,6 @@ char *argstostr(int ac, char **av)
 		}
 		results[count++] = '\n';
 	}
-	results[k] = '\0';
+	results[count] = '\0';
 	return (results);
 }
