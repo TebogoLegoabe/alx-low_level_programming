@@ -1,97 +1,76 @@
 #include <stdlib.h>
 #include "main.h"
 
+#include <stdlib.h>
+#include "main.h"
+
 /**
- * count_words - helper function to count the number of words in a string
- * @str: string to evaluate
+ * count_words - count the number of words in a string
+ * @str: input string
  *
- * Return: number of words
+ * Return: number of words in the string
  */
 int count_words(char *str)
 {
-int flag, count, i;
+	int count = 0;
 
-flag = 0;
-count = 0;
+	while (*str)
+	{
+		if (*str != ' ' && (*(str + 1) == ' ' || *(str + 1) == '\0'))
+			count++;
+		str++;
+	}
 
-for (i = 0; str[i] != '\0'; i++)
-{
-if (str[i] == ' ')
-{
-flag = 0;
-}
-else if (flag == 0)
-{
-flag = 1;
-count++;
-}
-}
-return (count);
+	return (count);
 }
 
 /**
-* strtow - splits a string into words
-* @str: string to split
-*
-* Return: pointer to an array of strings (Success)
-*         or NULL (Error)
-*/
+ * strtow - split a string into words
+ * @str: input string
+ *
+ * Return: array of strings (Success), NULL (Error)
+ */
 char **strtow(char *str)
 {
-char **words_array, *temp_word;
-int i, string_length, word_count, start, end;
+	char **words, *tmp;
+	int i, j, k, len, count = 0, word_length = 0;
 
-tmp = 0;
-string_length = 0;
-word_count = 0;
-word_length = 0;
-start = 0;
-end = 0;
+	if (!str || !*str)
+		return (NULL);
 
-while (*(str + string_length))
-{
-string_length++;
-}
-word_count = count_words(str);
+	count = count_words(str);
+	if (!count)
+		return (NULL);
 
-if (word_count == 0)
-{
-return (NULL);
-}
-words_array = (char **) malloc(sizeof(char *) * (word_count + 1));
-if (words_array == NULL)
-{
-return (NULL);
-}
-for (i = 0; i <= string_length; i++)
-{
-if (str[i] == ' ' || str[i] == '\0')
-{
-if (word_length)
-{
-end = i;
-temp_word = (char *) malloc(sizeof(char) * (word_length + 1));
-if (temp_word == NULL)
-{
-return (NULL);
-}
-while (start < end)
-{
-*temp_word++ = str[start++];
-}
+	words = malloc(sizeof(char *) * (count + 1));
+	if (!words)
+		return (NULL);
 
-*temp_word = '\0';
-
-words_array[tmp] = temp_word - word_length;
-tmp++;
-word_length = 0;
-}
-}
-else if (word_length++ == 0)
-{
-start = i;
-}
-}
-words_array[tmp] = NULL;
-return (words_array);
+	for (i = 0, j = 0; str[i] && j < count; i++)
+	{
+		if (str[i] != ' ')
+		{
+			word_length++;
+			if (word_length == 1)
+				k = i;
+		}
+		if ((str[i + 1] == ' ' || str[i + 1] == '\0') && word_length)
+		{
+			tmp = malloc(sizeof(char) * (word_length + 1));
+			if (!tmp)
+			{
+				while (--j >= 0)
+					free(words[j]);
+				free(words);
+				return (NULL);
+			}
+			strncpy(tmp, &str[k], word_length);
+			tmp[word_length] = '\0';
+			words[j] = tmp;
+			j++;
+			word_length = 0;
+		}
+	}
+	words[j] = NULL;
+	return (words);
 }
