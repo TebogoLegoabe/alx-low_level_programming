@@ -15,33 +15,34 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *c_string;
+	unsigned int i, j, length_one, length_two;
 
-	if (s1 == NULL)
-	{
-		s1 = "";
-	}
-	if (s2 == NULL)
-	{
-		s2 = "";
-	}
+	i = 0;
+	j = 0;
+	length_one = 0;
+	length_two = 0;
+	while (s1 && s1[length_one])
+		length_one++;
+	while (s2 && s2[length_two])
+		length_two++;
+	if (n < length_two)
+		c_string = malloc(sizeof(char) * (length_one + n + 1));
+	else
+		c_string = malloc(sizeof(char) * (length_one + length_two + 1));
 
-	size_t length_s1;
-	size_t length_s2;
-
-	length_s1 = strlen(s1);
-	length_s2 = strlen(s2);
-	if (n >= length_s2)
-	{
-		n = length_s2;
-	}
-	c_string = malloc((length_s1 + n + 1) * sizeof(char));
-	if (c_string == NULL)
-	{
+	if (!c_string)
 		return (NULL);
-	}
-	strcpy(c_string, s1);
-	strcpy(c_string, s2, n);
 
-	c_string[string_s1 + n] = '\0';
+	while (i < length_one)
+	{
+		c_string[i] = s1[i];
+		i++;
+	}
+	while (n < length_two && i < (length_one + n))
+		c_string[i++] = s2[j++];
+	while (n >= length_two && i < (length_one + length_two))
+		c_string[i++] = s2[j++];
+		c_string[i] = '\0';
+
 	return (c_string);
 }
