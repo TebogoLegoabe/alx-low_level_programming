@@ -12,10 +12,10 @@ int is_digit(char *s)
 while (*s)
 {
 if (*s < '0' || *s > '9')
-return 0;
+return (0);
 s++;
 }
-return 1;
+return (1);
 }
 
 int main(int argc, char *argv[])
@@ -32,7 +32,7 @@ len2++;
 int len = len1 + len2 + 1;
 int *result = calloc(len, sizeof(int));
 if (!result)
-return 1;
+return (1);
 
 for (int i = len1 - 1; i >= 0; i--)
 {
@@ -61,5 +61,5 @@ _putchar(result[i] + '0');
 _putchar('\n');
 
 free(result);
-return 0;
+return (0);
 }
