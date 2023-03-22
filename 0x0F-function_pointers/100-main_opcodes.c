@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	int i;
 	int num_bytes;
-	unsigned char *ptr;
+	char *ptr;
 
 	if (argc != 2)
 	{
@@ -26,17 +26,17 @@ int main(int argc, char *argv[])
 	printf("Error\n");
 	return (2);
 	}
-	ptr = (unsigned char *) main;
+	ptr = (char *) main;
 	for (i = 0; i < num_bytes; i++)
 	{
 		if (i == num_bytes - 1)
 		{
-			printf("%02hhx\n",ptr[i]);
+			printf("%02hhx\n", ptr[i]);
 			break;
 		}
 	printf("%02x", *(ptr + i));
 	}
-	printf("\n");
+	/*printf("\n");*/
 
 	return (0);
 }
