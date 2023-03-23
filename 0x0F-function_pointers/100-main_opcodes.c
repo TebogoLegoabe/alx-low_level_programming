@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 	printf("Error\n");
-	return (1);
+	exit(1);
 	}
 
 	num_bytes = atoi(argv[1]);
 	if (num_bytes < 0)
 	{
 	printf("Error\n");
-	return (2);
+	exit(2);
 	}
 	ptr = (char *) main;
 	for (i = 0; i < num_bytes; i++)
