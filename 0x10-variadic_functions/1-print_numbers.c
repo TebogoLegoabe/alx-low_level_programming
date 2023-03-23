@@ -1,10 +1,10 @@
+#include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
-#include "variadic_functions.h"
 
 /**
  * print_numbers - prints numbers,followed by new line
- * @seperator: string to printed between the numbers
+ * @separator: string to printed between the numbers
  * @n: number of integers passed
  *
  * Return: 0 (Success)
