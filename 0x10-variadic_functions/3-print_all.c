@@ -2,53 +2,86 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/**
+ * print_char - prints a char
+ * @list: list of arguments
+ * @str: string to print before the argument
+ */
+void print_char(va_list list, char *str)
+{
+	printf("%s%c", str, va_arg(list, int));
+}
 
 /**
-* print_all - prints anything
-* @format: list of types of arguments passed to the function
-*/
+ * print_int - prints an int
+ * @list: list of arguments
+ * @str: string to print before the argument
+ */
+void print_int(va_list list, char *str)
+{
+	printf("%s%d", str, va_arg(list, int));
+}
+
+/**
+ * print_float - prints a float
+ * @list: list of arguments
+ * @str: string to print before the argument
+ */
+void print_float(va_list list, char *str)
+{
+	printf("%s%f", str, va_arg(list, double));
+}
+
+/**
+ * print_string - prints a string
+ * @list: list of arguments
+ * @str: string to print before the argument
+ */
+void print_string(va_list list, char *str)
+{
+	char *ptr = va_arg(list, char *);
+
+	if (!ptr)
+		ptr = "(nil)";
+	printf("%s%s", str, ptr);
+}
+
+/**
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
+ */
 void print_all(const char * const format, ...)
 {
-int i = 0;
-char *ptr, *str = "";
+	va_list list;
+	int i = 0;
+	char *str = "";
 
+	va_start(list, format);
 
-va_list list;
-
-
-va_start(list, format);
-
-
-if (format)
-{
-while (format[i])
-{
-	switch (format[i])
+	while (format && format[i])
 	{
-		case 'c':
-			printf("%s%c", str, va_arg(list, int));
-			break;
-		case 'i':
-			printf("%s%d", str, va_arg(list, int));
-			break;
-		case 'f':
-			printf("%s%f", str, va_arg(list, double));
-			break;
-		case 's':
-			ptr = va_arg(list, char *);
-			if (!ptr)
-				ptr = "(nil)";
-			printf("%s%s", str, ptr);
-			break;
-		default:
-			i++;
-			continue;
+		switch (format[i])
+		{
+			case 'c':
+				print_char(list, str);
+				break;
+			case 'i':
+				print_int(list, str);
+				break;
+			case 'f':
+				print_float(list, str);
+				break;
+			case 's':
+				print_string(list, str);
+				break;
+			default:
+				i++;
+				continue;
+		}
+		str = ", ";
+		i++;
 	}
-	str = ", ";
-	i++;
-}
-}
 
-printf("\n");
-va_end(list);
+	printf("\n");
+	va_end(list);
 }
