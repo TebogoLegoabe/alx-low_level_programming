@@ -3,53 +3,47 @@
 #include <stdio.h>
 
 /**
- * print_all - prints anything
- * @format: a list of types of arguments passed to the function
- * c: char
- * i: integer
- * f: float
- * s: char * (if the string is NULL, print (nil) instead)
- * any other char should be ignored
- *
- * Return: void
- */
+* print_all - prints anything
+* @format: list of types of arguments passed to the function
+*/
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	char *str;
-	int i = 0, num;
-	float f;
+int i = 0;
+char *ptr, *str = "";
 
-	va_start(args, format);
+va_list list;
 
-	while (format && format[i])
+va_start(list, format);
+if (format)
+{
+while (format[i])
+{
+	switch (format[i])
 	{
-		switch (format[i])
-		{
-			case 'c':
-				printf("%c", va_arg(args, int));
-				break;
-			case 'i':
-				num = va_arg(args, int);
-				printf("%d", num);
-				break;
-			case 'f':
-				f = va_arg(args, double);
-				printf("%f", f);
-				break;
-			case 's':
-				str = va_arg(args, char *);
-				if (str == NULL)
-					printf("(nil)");
-				else
-					printf("%s", str);
-				break;
-		}
-		if ((format[i + 1]) && (format[i] == 'c' || format[i] == 'i' ||
-					format[i] == 'f' || format[i] == 's'))
-			printf(", ");
-		i++;
+		case 'a':
+			printf("%s%c", str, va_arg(list, int));
+			break;
+		case 'b':
+			printf("%s%d", str, va_arg(list, int));
+			break;
+		case 'b':
+			printf("%s%f", str, va_arg(list, double));
+			break;
+		case 'c':
+			ptr = va_arg(list, char *);
+			if (!ptr)
+				ptr = "(nil)";
+			printf("%s%s", str, ptr);
+			break;
+		default:
+			i++;
+			continue;
 	}
-	printf("\n");
-	va_end(args);
+	str = ", ";
+	i++;
+}
+}
+
+printf("\n");
+va_end(list);
 }
