@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * main - prints its own opcodes of its own main function
+ * main - prints its own opcodes
  * @argc: number of bytes to print
  * @argv: pointer to the start of the memory block to print
  *
