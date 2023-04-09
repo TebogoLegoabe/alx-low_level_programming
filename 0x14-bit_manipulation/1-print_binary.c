@@ -1,34 +1,32 @@
-#include "holberton.h"
-#include <stdio.h>
+#include "main.h"
 
 /**
- * print_binary - converts unsigned int to binary
- * @n: unsigned int
+ * print_binary - prints the binary equivalent of a decimal number
+ * @n: number to print in binary
  *
- * Return: binary
+ * Return: void
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int i = n, mask = 1;
-	int j = 0;
+	int i, count = 0;
+	unsigned long int current;
 
-	while (i > 0)
+	for (i = 63; i >= 0; i--)
 	{
-		j++;
-		i >>= 1;
-	}
-	j -= 1;
+		current = n >> i;
 
-	if (j > 0)
-		mask = mask << j;
-
-	while (mask > 0)
-	{
-		if (n & mask)
+		if (current & 1)
+		{
 			_putchar('1');
-		else
+			count++;
+		}
+		else if (count)
+		{
 			_putchar('0');
-
-		mask >>= 1;
+		}
+	}
+	if (!count)
+	{
+		_putchar('0');
 	}
 }
