@@ -1,26 +1,21 @@
-#!/usr/bin/python3
-
 def island_perimeter(grid):
   """
-  Returns the perimeter of the island described in grid.
+  Calculater the Island's perimeter
 
-  grid is a list of list of integers:
-    0 represents a water zone
-    1 represents a land zone
-  One cell is a square with side length 1
-  Grid cells are connected horizontally/vertically (not diagonally).
-  Grid is rectangular, width and height don't exceed 100
-  Grid is completely surrounded by water, and there is one island (or nothing).
-  The island doesn't have “lakes” (water inside that isn’t connected to the water around the island).
+    Parameter:
+        grid (array): An 0's and 1's array that represents an island (1)
+        sourrounded by water (0)
+
+    Returns:
+        The island's perimeter
   """
-
   perimeter = 0
   for i in range(len(grid)):
     for j in range(len(grid[0])):
       if grid[i][j] == 1:
         perimeter += 4
-        if i == 0 or grid[i - 1][j] == 0:
+        if i > 0 and grid[i - 1][j] == 1:
           perimeter -= 1
-        if j == 0 or grid[i][j - 1] == 0:
+        if j > 0 and grid[i][j - 1] == 1:
           perimeter -= 1
   return perimeter
