@@ -1,24 +1,19 @@
 CC = gcc
-SRC = school.c
-OBJ = $(SRC:.c=.o)
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o) 
 NAME = school
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 all: $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CLFAGS) $(OBJ) -o $(NAME)
 
 clean:
-	$(RM) *~ core a.out
-	find . -name "*.o" -delete
+	$(RM) *~ $(NAME)
 
 oclean:
 	$(RM) $(OBJ)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean: clean oclean
 
 re: fclean all
